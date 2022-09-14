@@ -3,6 +3,7 @@ import { searchPokemon } from "../api";
 
 const SearchBar = () => {
   const [search, setSearch] = useState("");
+  const [pokemon, setPokemon] = useState();
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -11,11 +12,11 @@ const SearchBar = () => {
 
   const handleSearch = async (e) => {
     const data = await searchPokemon(search);
-    console.log(data);
+    setPokemon(data);
   };
   return (
-    <div>
-      <div>
+    <div className="searchbar-container">
+      <div className="searchbar">
         <input
           placeholder="Buscar pokemon..."
           type="text"
@@ -23,7 +24,7 @@ const SearchBar = () => {
           value={search}
         />
       </div>
-      <div>
+      <div className="searchbar-btn">
         <button onClick={handleSearch}> Buscar</button>
       </div>
     </div>
